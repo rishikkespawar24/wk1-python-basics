@@ -1,24 +1,34 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
     <title>Web Calculator</title>
-</head>
-<body>
-    <h1>Web Calculator</h1>
-    <form method="post">
+    <!-- This line loads your styles from week1/calculator_web/static/styles.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div class="calculator-container">
+      <h1>Calculator</h1>
+
+      <form method="post" novalidate>
         <input type="number" step="any" name="num1" placeholder="First number" required>
-        <select name="operation">
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
+        <select name="operation" required>
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
         </select>
         <input type="number" step="any" name="num2" placeholder="Second number" required>
         <button type="submit">Calculate</button>
-    </form>
+      </form>
 
-    {% if result is not none %}
-        <h2>Result: {{ result }}</h2>
-    {% endif %}
-</body>
+      {% if result is not none %}
+        <div class="result">Result: {{ result }}</div>
+      {% endif %}
+
+      <div class="footer">Tip: you can use decimals like 12.5</div>
+    </div>
+  </body>
 </html>
+
