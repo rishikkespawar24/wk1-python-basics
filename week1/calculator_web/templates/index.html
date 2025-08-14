@@ -1,34 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Web Calculator</title>
-    <!-- This line loads your styles from week1/calculator_web/static/styles.css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSS + JS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}">
+    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
   </head>
   <body>
-    <div class="calculator-container">
-      <h1>Calculator</h1>
+    <div class="calc">
+      <div class="display" id="display">0</div>
 
-      <form method="post" novalidate>
-        <input type="number" step="any" name="num1" placeholder="First number" required>
-        <select name="operation" required>
-          <option value="+">+</option>
-          <option value="-">-</option>
-          <option value="*">*</option>
-          <option value="/">/</option>
-        </select>
-        <input type="number" step="any" name="num2" placeholder="Second number" required>
-        <button type="submit">Calculate</button>
-      </form>
+      <!-- Row 1 -->
+      <button class="btn fn" data-action="clear">AC</button>
+      <button class="btn fn" data-action="sign">±</button>
+      <button class="btn fn" data-action="percent">%</button>
+      <button class="btn op" data-op="÷">÷</button>
 
-      {% if result is not none %}
-        <div class="result">Result: {{ result }}</div>
-      {% endif %}
+      <!-- Row 2 -->
+      <button class="btn num" data-num="7">7</button>
+      <button class="btn num" data-num="8">8</button>
+      <button class="btn num" data-num="9">9</button>
+      <button class="btn op" data-op="×">×</button>
 
-      <div class="footer">Tip: you can use decimals like 12.5</div>
+      <!-- Row 3 -->
+      <button class="btn num" data-num="4">4</button>
+      <button class="btn num" data-num="5">5</button>
+      <button class="btn num" data-num="6">6</button>
+      <button class="btn op" data-op="−">−</button>
+
+      <!-- Row 4 -->
+      <button class="btn num" data-num="1">1</button>
+      <button class="btn num" data-num="2">2</button>
+      <button class="btn num" data-num="3">3</button>
+      <button class="btn op" data-op="+">+</button>
+
+      <!-- Row 5 -->
+      <button class="btn num zero" data-num="0">0</button>
+      <button class="btn num" data-num=".">.</button>
+      <button class="btn op eq" data-action="equals">=</button>
     </div>
   </body>
 </html>
+
 
